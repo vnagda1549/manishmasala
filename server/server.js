@@ -8,7 +8,7 @@ const port = process.env.PORT || 5000;
 app.use(cors());
 app.use(express.json());
 
-const uri = 'mongodb+srv://puniasatvirsp:Satvir5600@satvir.z1hrnzq.mongodb.net/?retryWrites=true';
+const uri = 'mongodb+srv://manishmasalafoods:CcAIiXrQ6BFUeEe8@manishmasala.zrbufhp.mongodb.net/';
 mongoose.connect(uri, { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true });
 const connection = mongoose.connection;
 connection.once('open', () => {
