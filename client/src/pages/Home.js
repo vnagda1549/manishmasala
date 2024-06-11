@@ -1,10 +1,16 @@
 import React from 'react';
+import Footer from '../components/Footer';
+import Navbar from '../components/Navbar';
+import Header from '../components/Header';
 
-function BodyPage() {
+function Home() {
     return (
-        <main>
+        <div>
+            <Navbar/>
+            <Header/>
+            <main>
             <section>
-                <img src="/images/banner.jpg" alt="Indian Spices" width="100%" />
+                <img src="/images/banner.png" alt="Indian Spices" width="100%" />
                 <div class="card">
                     <h2>Our Spices</h2>
                     <p>Discover a variety of authentic Indian spices that bring flavor and aroma to your dishes.</p>
@@ -16,7 +22,9 @@ function BodyPage() {
                 </div>
             </section>
         </main>
+            <Footer />
+        </div>
     );
 }
 
-export default BodyPage;
+export default Home;

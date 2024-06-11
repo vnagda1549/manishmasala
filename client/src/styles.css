@@ -54,7 +54,7 @@ main .spice-images {
 
 main .spice-images img {
     width: 30%;
-    height: auto;
+    height: 500px;
     border-radius: 8px;
 }
 
