@@ -1,0 +1,36 @@
+type Quantity {
+  size: String
+  price: Float
+}
+
+type Product {
+  id: ID
+  _id: ID
+  name: String
+  image: String
+  longDescription: String
+  shortDescription: String
+  quantities: [Quantity]
+}
+
+type Query {
+  productList: [Product]
+  product(id: ID!): Product
+}
+
+input QuantityInput {
+  size: String
+  price: Float
+}
+
+input ProductInput {
+  name: String
+  image: String
+  longDescription: String
+  shortDescription: String
+  quantities: [QuantityInput]
+}
+
+type Mutation {
+  productAdd(product: ProductInput): Product
+}
