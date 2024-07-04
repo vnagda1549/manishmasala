@@ -1,29 +1,75 @@
 import React, { useState } from 'react';
+import { useQuery, useMutation, gql } from '@apollo/client';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import NavigationBar from '../components/Navbar';
 import '../css/ReviewStyle.css';
 
-const Reviews = () => {
-    const [reviews, setReviews] = useState([
-        { id: 1, name: "Ajay Kumar", rating: 5, comment: "Excellent spices! The quality is unmatched." },
-        { id: 2, name: "Vikas Seth", rating: 4, comment: "Great variety of spices. I found everything I needed." }
-    ]);
+const GET_REVIEWS = gql`
+  query GetReviews {
+    reviewList {
+      id
+      name
+      rating
+      comment
+    }
+  }
+`;
 
+const ADD_REVIEW = gql`
+  mutation AddReview($review: ReviewInput!) {
+    reviewAdd(review: $review) {
+      id
+      name
+      rating
+      comment
+    }
+  }
+`;
+
+function Reviews() {
+    const { loading, error, data, refetch } = useQuery(GET_REVIEWS);
+    const [addReview] = useMutation(ADD_REVIEW);
     const [newReview, setNewReview] = useState({ name: '', rating: 0, comment: '' });
+    const [submissionError, setSubmissionError] = useState(null);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
-        setNewReview({ ...newReview, [name]: value });
+        setNewReview({
+            ...newReview,
+            [name]: name === "rating" ? parseInt(value) : value,
+        });
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        if (newReview.name && newReview.rating && newReview.comment) {
-            setReviews([...reviews, { ...newReview, id: reviews.length + 1 }]);
+        try {
+            const { data } = await addReview({ variables: { review: newReview } });
+            console.log('Review added:', data);
             setNewReview({ name: '', rating: 0, comment: '' });
+            setSubmissionError(null);
+            refetch(); // Refetch reviews after adding a new one
+        } catch (error) {
+            console.error('Error posting review:', error);
+            if (error.networkError && error.networkError.result && error.networkError.result.errors) {
+                console.error('Error details:', error.networkError.result.errors); // Log detailed error response
+                setSubmissionError(error.networkError.result.errors[0].message);
+            } else {
+                setSubmissionError(error.message || 'Failed to submit review. Please try again.');
+            }
         }
     };
+
+    if (loading) {
+        console.log('Loading reviews...');
+        return <p>Loading...</p>;
+    }
+    if (error) {
+        console.error('Error loading reviews:', error);
+        return <p>Error loading reviews :(</p>;
+    }
+
+    console.log('Fetched reviews:', data);
 
     return (
         <>
@@ -31,11 +77,10 @@ const Reviews = () => {
             <NavigationBar />
             <main>
                 <section>
-                    {/* <img src="/images/review-banner.jpg" alt="Reviews" className="banner-img" /> */}
                     <div className="card">
                         <h2>Customer Reviews</h2>
                         <p>Read what our customers have to say about our spices.</p>
-                        {reviews.map((review) => (
+                        {data.reviewList.map((review) => (
                             <div key={review.id} className="review-item">
                                 <h3>{review.name}</h3>
                                 <div className="stars">
@@ -69,12 +114,13 @@ const Reviews = () => {
                             </div>
                             <button type="submit">Submit</button>
                         </form>
+                        {submissionError && <p className="error">{submissionError}</p>}
                     </div>
                 </section>
             </main>
             <Footer />
         </>
     );
-};
+}
 
 export default Reviews;

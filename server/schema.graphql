@@ -13,9 +13,20 @@ type Product {
   quantities: [Quantity]
 }
 
+type Review {
+  id: ID
+  _id: ID
+  name: String
+  rating: Int
+  comment: String
+  createdAt: String
+  updatedAt: String
+}
+
 type Query {
   productList: [Product]
   product(id: ID!): Product
+  reviewList: [Review]
 }
 
 input QuantityInput {
@@ -31,6 +42,13 @@ input ProductInput {
   quantities: [QuantityInput]
 }
 
+input ReviewInput {
+  name: String
+  rating: Int
+  comment: String
+}
+
 type Mutation {
   productAdd(product: ProductInput): Product
+  reviewAdd(review: ReviewInput): Review
 }

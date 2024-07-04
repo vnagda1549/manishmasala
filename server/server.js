@@ -39,15 +39,42 @@ const product = async (_root, { id }) => {
   return product;
 };
 
+// Review Resolvers
+const reviewAdd = async (_root, { review }) => {
+    try {
+      console.log('Received review:', review);
+      const result = await db.collection("reviews").insertOne(review);
+      const savedReview = await db.collection("reviews").findOne({ _id: result.insertedId });
+      console.log('Review added:', savedReview);
+      return savedReview;
+    } catch (error) {
+      console.error('Error adding review:', error);
+      throw new Error('Failed to add review');
+    }
+  };
+  
+  const reviewList = async () => {
+    try {
+      console.log('Fetching reviews from database...');
+      const reviews = await db.collection("reviews").find({}).toArray();
+      console.log('Reviews fetched:', reviews);
+      return reviews;
+    } catch (error) {
+      console.error('Error fetching reviews:', error);
+      throw new Error('Failed to fetch reviews');
+    }
+  };
 const typeDefs = await readFile("./schema.graphql", "utf8");
 
 const resolvers = {
   Query: {
     productList: productList,
     product: product,
+    reviewList: reviewList, // Add reviewList query
   },
   Mutation: {
     productAdd: productAdd,
+    reviewAdd: reviewAdd, // Add reviewAdd mutation
   },
 };
 
