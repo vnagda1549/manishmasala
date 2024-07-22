@@ -11,7 +11,7 @@ let db;
 const app = express();
 
 app.use(cors({
-  origin: ['http://localhost:3000', 'http://localhost:3001'], // Allow requests from both origins
+  origin: ['http://localhost:3000', 'http://localhost:3001'], 
 }));
 
 app.use(express.json());
@@ -70,11 +70,11 @@ const resolvers = {
   Query: {
     productList: productList,
     product: product,
-    reviewList: reviewList, // Add reviewList query
+    reviewList: reviewList,
   },
   Mutation: {
     productAdd: productAdd,
-    reviewAdd: reviewAdd, // Add reviewAdd mutation
+    reviewAdd: reviewAdd, 
   },
 };
 

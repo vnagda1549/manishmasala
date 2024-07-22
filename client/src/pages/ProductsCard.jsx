@@ -13,14 +13,14 @@ function ProductCard({ product }) {
 
   return (
     <div className="product-card" onClick={handleCardClick}>
-      <img src={product.image} alt={product.name} />
+        <img 
+                src={`${product.image}`} 
+                alt={product.name} 
+                className="product-image" 
+                onError={(e) => console.log('Image load error', product.image)}
+              />
       <h3>{product.name}</h3>
-      {/* <p>{product.shortDescription}</p>
-      <p>
-        {product.quantities.map((quantity, index) => (
-          <span key={index}>{quantity.size}: ${quantity.price.toFixed(2)}<br/></span>
-        ))}
-      </p> */}
+      {}
     </div>
   );
 }
