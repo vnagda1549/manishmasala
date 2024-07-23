@@ -200,42 +200,48 @@ const ProductUploadForm = () => {
                 </tr>
               </thead>
               <tbody>
-                {products.map((product, index) => (
-                  <tr key={product._id}>
-                    <td>{index + 1}</td>
-                    <td>{product.name}</td>
-                    <td>
-                      <img
-                        src={product.image}
-                        alt={product.name}
-                        style={{ width: "100px" }}
-                      />
-                    </td>
-                    <td>{product.longDescription}</td>
-                    <td>
-                      {product.quantities.map((size, i) => (
-                        <div key={i}>
-                          {size.size} - ${size.price}
-                        </div>
-                      ))}
-                    </td>
-                    <td>
-                      <Button
-                        variant="warning"
-                        onClick={() => handleEditProduct(product)}
-                        className="me-2 mb-2"
-                      >
-                        Edit
-                      </Button>
-                      <Button
-                        variant="danger"
-                        onClick={() => handleDeleteProduct(product._id)}
-                      >
-                        Delete
-                      </Button>
-                    </td>
+                {products.length > 0 ? (
+                  products.map((product, index) => (
+                    <tr key={product._id}>
+                      <td>{index + 1}</td>
+                      <td>{product.name}</td>
+                      <td>
+                        <img
+                          src={product.image}
+                          alt={product.name}
+                          style={{ width: "100px" }}
+                        />
+                      </td>
+                      <td>{product.longDescription}</td>
+                      <td>
+                        {product.quantities.map((size, i) => (
+                          <div key={i}>
+                            {size.size} - ${size.price}
+                          </div>
+                        ))}
+                      </td>
+                      <td>
+                        <Button
+                          variant="warning"
+                          onClick={() => handleEditProduct(product)}
+                          className="me-2 mb-2"
+                        >
+                          Edit
+                        </Button>
+                        <Button
+                          variant="danger"
+                          onClick={() => handleDeleteProduct(product._id)}
+                        >
+                          Delete
+                        </Button>
+                      </td>
+                    </tr>
+                  ))
+                ) : (
+                  <tr>
+                    <td colSpan="6">No products found</td>
                   </tr>
-                ))}
+                )}
               </tbody>
             </Table>
           </div>
@@ -348,54 +354,6 @@ const ProductUploadForm = () => {
                 {submissionError && <p className="error">{submissionError}</p>}
               </Form>
             </div>
-          </div>
-
-          <div className="product-list-wrapper mt-5 p-4">
-            <h2 className="text-center mb-4">Product List</h2>
-            <Table striped bordered hover responsive>
-              <thead>
-                <tr>
-                  <th>#</th>
-                  <th>Name</th>
-                  <th>Image</th>
-                  <th>Description</th>
-                  <th>Sizes & Prices</th>
-                  <th>Actions</th>
-                </tr>
-              </thead>
-              <tbody>
-                {products.map((product, index) => (
-                  <tr key={index}>
-                    <td>{index + 1}</td>
-                    <td>{product.name}</td>
-                    <td>{product.image}</td>
-                    <td>{product.description}</td>
-                    <td>
-                      {product.sizes.map((size, i) => (
-                        <div key={i}>
-                          {size.size} - ${size.price}
-                        </div>
-                      ))}
-                    </td>
-                    <td>
-                      <Button
-                        variant="warning"
-                        onClick={() => handleEditProduct(index)}
-                        className="me-2"
-                      >
-                        Edit
-                      </Button>
-                      <Button
-                        variant="danger"
-                        onClick={() => handleDeleteProduct(index)}
-                      >
-                        Delete
-                      </Button>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </Table>
           </div>
         </Col>
       </Row>
