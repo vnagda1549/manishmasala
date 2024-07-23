@@ -349,6 +349,54 @@ const ProductUploadForm = () => {
               </Form>
             </div>
           </div>
+
+          <div className="product-list-wrapper mt-5 p-4">
+            <h2 className="text-center mb-4">Product List</h2>
+            <Table striped bordered hover responsive>
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Name</th>
+                  <th>Image</th>
+                  <th>Description</th>
+                  <th>Sizes & Prices</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                {products.map((product, index) => (
+                  <tr key={index}>
+                    <td>{index + 1}</td>
+                    <td>{product.name}</td>
+                    <td>{product.image}</td>
+                    <td>{product.description}</td>
+                    <td>
+                      {product.sizes.map((size, i) => (
+                        <div key={i}>
+                          {size.size} - ${size.price}
+                        </div>
+                      ))}
+                    </td>
+                    <td>
+                      <Button
+                        variant="warning"
+                        onClick={() => handleEditProduct(index)}
+                        className="me-2"
+                      >
+                        Edit
+                      </Button>
+                      <Button
+                        variant="danger"
+                        onClick={() => handleDeleteProduct(index)}
+                      >
+                        Delete
+                      </Button>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </Table>
+          </div>
         </Col>
       </Row>
     </Container>

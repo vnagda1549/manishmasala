@@ -11,45 +11,48 @@ function ContactUs() {
             <Header />
             <NavigationBar />
             <main>
-                <section>
-                    {/* <img src="/images/contact-banner.jpg" alt="Contact Us" width="100%" /> */}
-                    <div className="card">
-                        <h2>Contact Us</h2>
-                        <p>We would love to hear from you. Please reach out to us using the information below or fill out the contact form.</p>
+    <section className="contact-section">
+        <div className="contact-container">
+            <h2>Contact Us</h2>
+            <p>We would love to hear from you. Please reach out to us using the information below or fill out the contact form.</p>
+            <div className="contact-details">
+    <div className="details-item">
+        <i className="fas fa-map-marker-alt"></i>
+        <h3>Address</h3>
+        <p>123 Spice Street, Flavor Town, Food Country, 45678</p>
+    </div>
+    <div className="details-item">
+        <i className="fas fa-phone-alt"></i>
+        <h3>Phone</h3>
+        <p>+123-456-7890</p>
+    </div>
+    <div className="details-item">
+        <i className="fas fa-envelope"></i>
+        <h3>Email</h3>
+        <p>info@manishmasala.com</p>
+    </div>
+</div>
+            <div className="contact-form">
+                <form>
+                    <div className="form-group">
+                        <label htmlFor="name">Name</label>
+                        <input type="text" id="name" name="name" required />
                     </div>
-                    <div className="contact-info">
-                        <div className="contact-item">
-                            <h3>Address</h3>
-                            <p>123 Spice Street, Flavor Town, Food Country, 45678</p>
-                        </div>
-                        <div className="contact-item">
-                            <h3>Phone</h3>
-                            <p>+123-456-7890</p>
-                        </div>
-                        <div className="contact-item">
-                            <h3>Email</h3>
-                            <p>info@manishmasala.com</p>
-                        </div>
+                    <div className="form-group">
+                        <label htmlFor="email">Email</label>
+                        <input type="email" id="email" name="email" required />
                     </div>
-                    <div className="contact-form">
-                        <form>
-                            <div className="form-group">
-                                <label htmlFor="name">Name</label>
-                                <input type="text" id="name" name="name" required />
-                            </div>
-                            <div className="form-group">
-                                <label htmlFor="email">Email</label>
-                                <input type="email" id="email" name="email" required />
-                            </div>
-                            <div className="form-group">
-                                <label htmlFor="message">Message</label>
-                                <textarea id="message" name="message" required></textarea>
-                            </div>
-                            <button type="submit">Submit</button>
-                        </form>
+                    <div className="form-group">
+                        <label htmlFor="message">Message</label>
+                        <textarea id="message" name="message" required></textarea>
                     </div>
-                </section>
-            </main>
+                    <button style={{backgroundColor:'#ff5722'}} type="submit">Submit</button>
+                </form>
+            </div>
+        </div>
+    </section>
+</main>
+
             <Footer />
         </>
     );

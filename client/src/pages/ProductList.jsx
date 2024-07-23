@@ -29,7 +29,7 @@ function ProductList() {
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error.message}</p>;
 
-  console.log('Product IDs:', data.productList.map(product => product._id)); // Log the _id to the console
+  console.log('Product IDs:', data.productList.map(product => product._id)); 
 
   return (
     <div>

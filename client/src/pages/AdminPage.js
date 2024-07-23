@@ -3,7 +3,7 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import { Container, Tabs, Tab } from "react-bootstrap";
 
-import ProductUploadForm from "./ProductUploadForm";
+import ProductUploadForm from "../pages/ProductUploadForm"; // Adjust the path if needed
 
 const AdminPage = () => {
   return (
@@ -15,14 +15,13 @@ const AdminPage = () => {
           <Tabs defaultActiveKey="product" id="admin-tabs" className="mb-3">
             <Tab eventKey="product" title="Products">
               <div className="p-3">
-                <h2>Product List</h2>
                 <ProductUploadForm />
               </div>
             </Tab>
             <Tab eventKey="testimonial" title="Testimonial">
               <div className="p-3">
-                <h2>User Management</h2>
-                <p>Form to add Testimonial</p>
+                <h2>Add Testimonial</h2>
+                <p>Form to add Testimonial will be here</p>
               </div>
             </Tab>
           </Tabs>

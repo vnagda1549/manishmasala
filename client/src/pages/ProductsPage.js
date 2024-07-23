@@ -35,7 +35,12 @@ function ProductsPage() {
         <div className="products-container">
           {data.productList.map(product => (
             <div key={product.id} className="product-card">
-              <img src={product.image} alt={product.name} />
+                <img 
+                src={`data:image/png;base64,${product.image}`} 
+                alt={product.name} 
+                className="product-image" 
+                onError={(e) => console.log('Image load error', product.image)}
+              />
               <h3>{product.name}</h3>
               <p>{product.shortDescription}</p>
               <p>

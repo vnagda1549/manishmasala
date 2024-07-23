@@ -76,45 +76,49 @@ function Reviews() {
             <Header />
             <NavigationBar />
             <main>
-                <section>
-                    <div className="card">
-                        <h2>Customer Reviews</h2>
-                        <p>Read what our customers have to say about our spices.</p>
-                        {data.reviewList.map((review) => (
-                            <div key={review.id} className="review-item">
-                                <h3>{review.name}</h3>
-                                <div className="stars">
-                                    {'★'.repeat(review.rating) + '☆'.repeat(5 - review.rating)}
+                <section className="reviews-section">
+                    <div className="review-form-wrapper">
+                        <div className="card review-form">
+                            <h2>Post a Review</h2>
+                            <form onSubmit={handleSubmit}>
+                                <div className="form-group">
+                                    <label htmlFor="name">Name</label>
+                                    <input type="text" id="name" name="name" value={newReview.name} onChange={handleChange} required />
                                 </div>
-                                <p>{review.comment}</p>
-                            </div>
-                        ))}
+                                <div className="form-group">
+                                    <label htmlFor="rating">Rating</label>
+                                    <select id="rating" name="rating" value={newReview.rating} onChange={handleChange} required>
+                                        <option value="0">Select Rating</option>
+                                        <option value="1">1 Star</option>
+                                        <option value="2">2 Stars</option>
+                                        <option value="3">3 Stars</option>
+                                        <option value="4">4 Stars</option>
+                                        <option value="5">5 Stars</option>
+                                    </select>
+                                </div>
+                                <div className="form-group">
+                                    <label htmlFor="comment">Comment</label>
+                                    <textarea id="comment" name="comment" value={newReview.comment} onChange={handleChange} required></textarea>
+                                </div>
+                                <button style={{backgroundColor:'#ff5722'}} type="submit">Submit</button>
+                            </form>
+                            {submissionError && <p className="error">{submissionError}</p>}
+                        </div>
                     </div>
-                    <div className="card review-form">
-                        <h2>Post a Review</h2>
-                        <form onSubmit={handleSubmit}>
-                            <div className="form-group">
-                                <label htmlFor="name">Name</label>
-                                <input type="text" id="name" name="name" value={newReview.name} onChange={handleChange} required />
-                            </div>
-                            <div className="form-group">
-                                <label htmlFor="rating">Rating</label>
-                                <select id="rating" name="rating" value={newReview.rating} onChange={handleChange} required>
-                                    <option value="0">Select Rating</option>
-                                    <option value="1">1 Star</option>
-                                    <option value="2">2 Stars</option>
-                                    <option value="3">3 Stars</option>
-                                    <option value="4">4 Stars</option>
-                                    <option value="5">5 Stars</option>
-                                </select>
-                            </div>
-                            <div className="form-group">
-                                <label htmlFor="comment">Comment</label>
-                                <textarea id="comment" name="comment" value={newReview.comment} onChange={handleChange} required></textarea>
-                            </div>
-                            <button type="submit">Submit</button>
-                        </form>
-                        {submissionError && <p className="error">{submissionError}</p>}
+                    <div className="reviews-wrapper">
+                        <div className="card">
+                            <h2>Customer Reviews</h2>
+                            <p>Read what our customers have to say about our spices.</p>
+                            {data.reviewList.map((review) => (
+                                <div key={review.id} className="review-item">
+                                    <h3>{review.name}</h3>
+                                    <div className="stars">
+                                        {'★'.repeat(review.rating) + '☆'.repeat(5 - review.rating)}
+                                    </div>
+                                    <p>{review.comment}</p>
+                                </div>
+                            ))}
+                        </div>
                     </div>
                 </section>
             </main>

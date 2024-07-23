@@ -53,7 +53,12 @@ function ProductDetails() {
       <Header />
       <main className="product-details-container">
         <div className="product-card product-image-card">
-          <img src={product.image} alt={product.name} />
+        <img 
+                src={`${product.image}`} 
+                alt={product.name} 
+                className="product-image" 
+                onError={(e) => console.log('Image load error', product.image)}
+              />
         </div>
         <div className="product-card product-info-card">
           <h2>{product.name}</h2>

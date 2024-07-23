@@ -105,7 +105,7 @@ const resolvers = {
   Query: {
     productList: productList,
     product: product,
-    reviewList: reviewList, // Add reviewList query
+    reviewList: reviewList,
   },
   Mutation: {
     productAdd: productAdd,
