@@ -3,7 +3,7 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import { Container, Tabs, Tab } from "react-bootstrap";
 
-import ProductUploadForm from "../pages/AddProduct";
+import ProductUploadForm from "./ProductUploadForm";
 
 const AdminPage = () => {
   return (

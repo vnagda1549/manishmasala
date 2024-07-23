@@ -30,16 +30,16 @@ type Query {
 }
 
 input QuantityInput {
-  size: String
-  price: Float
+  size: String!
+  price: Float!
 }
 
 input ProductInput {
-  name: String
-  image: String
-  longDescription: String
-  shortDescription: String
-  quantities: [QuantityInput]
+  name: String!
+  image: String!
+  longDescription: String!
+  shortDescription: String!
+  quantities: [QuantityInput]!
 }
 
 input ReviewInput {
@@ -50,5 +50,7 @@ input ReviewInput {
 
 type Mutation {
   productAdd(product: ProductInput): Product
+  productUpdate(id: ID!, product: ProductInput): Product
+  productDelete(id: ID!): Product
   reviewAdd(review: ReviewInput): Review
 }
