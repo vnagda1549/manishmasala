@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Container, Row, Col, Form, Button, Table } from "react-bootstrap";
+import '../css/ProductUploadForm.css';
 
 const ProductUploadForm = () => {
   const [sizes, setSizes] = useState([{ size: "", price: "" }]);
@@ -59,58 +60,11 @@ const ProductUploadForm = () => {
   };
 
   return (
-    <Container className="mt-5">
-      <Row className="justify-content-start">
-        <Col md={8}>
-          <div className="p-4">
-            <Table striped bordered hover responsive>
-              <thead>
-                <tr>
-                  <th>#</th>
-                  <th>Name</th>
-                  <th>Image</th>
-                  <th>Description</th>
-                  <th>Sizes & Prices</th>
-                  <th>Actions</th>
-                </tr>
-              </thead>
-              <tbody>
-                {products.map((product, index) => (
-                  <tr key={index}>
-                    <td>{index + 1}</td>
-                    <td>{product.name}</td>
-                    <td>{product.image}</td>
-                    <td>{product.description}</td>
-                    <td>
-                      {product.sizes.map((size, i) => (
-                        <div key={i}>
-                          {size.size} - ${size.price}
-                        </div>
-                      ))}
-                    </td>
-                    <td>
-                      <Button
-                        variant="warning"
-                        onClick={() => handleEditProduct(index)}
-                        className="me-2"
-                      >
-                        Edit
-                      </Button>
-                      <Button
-                        variant="danger"
-                        onClick={() => handleDeleteProduct(index)}
-                      >
-                        Delete
-                      </Button>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </Table>
-          </div>
-
-          <div className="p-4 mb-5">
-            <h2 className="mb-4 text-center">
+    <Container className="product-upload-form mt-5">
+      <Row className="justify-content-center">
+        <Col md={10}>
+          <div className="product-form-wrapper p-4">
+            <h2 className="text-center mb-4">
               {editIndex !== null ? "Edit Product" : "Upload Product"}
             </h2>
             <Form onSubmit={handleSubmit}>
@@ -184,10 +138,58 @@ const ProductUploadForm = () => {
                 Add Size
               </Button>
 
-              <Button variant="warning" type="submit" className="w-100 mt-4">
+              <Button variant="warning" style={{backgroundColor:'#ff5722'}} type="submit" className="w-100 mt-4">
                 {editIndex !== null ? "Update Product" : "Upload Product"}
               </Button>
             </Form>
+          </div>
+
+          <div className="product-list-wrapper mt-5 p-4">
+            <h2 className="text-center mb-4">Product List</h2>
+            <Table striped bordered hover responsive>
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Name</th>
+                  <th>Image</th>
+                  <th>Description</th>
+                  <th>Sizes & Prices</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                {products.map((product, index) => (
+                  <tr key={index}>
+                    <td>{index + 1}</td>
+                    <td>{product.name}</td>
+                    <td>{product.image}</td>
+                    <td>{product.description}</td>
+                    <td>
+                      {product.sizes.map((size, i) => (
+                        <div key={i}>
+                          {size.size} - ${size.price}
+                        </div>
+                      ))}
+                    </td>
+                    <td>
+                      <Button
+                        variant="warning"
+                        onClick={() => handleEditProduct(index)}
+                        className="me-2"
+                      >
+                        Edit
+                      </Button>
+                      <Button
+                        variant="danger"
+                        onClick={() => handleDeleteProduct(index)}
+                      >
+                        Delete
+                      </Button>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </Table>
           </div>
         </Col>
       </Row>

@@ -1,0 +1,95 @@
+/* ProductUploadForm.css */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  
+  .product-upload-form {
+    background-color: #f1f1f1;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .product-form-wrapper {
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .product-list-wrapper {
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  h2 {
+    color: #343a40;
+    font-weight: bold;
+  }
+  
+  form .form-group label {
+    color: #495057;
+    font-weight: bold;
+  }
+  
+  form .form-group input,
+  form .form-group textarea,
+  form .form-group select {
+    border-radius: 4px;
+    border: 1px solid #ced4da;
+    padding: 10px;
+    font-size: 1rem;
+  }
+  
+  button {
+    border-radius: 4px;
+    font-size: 1rem;
+  }
+  
+  button[type="submit"] {
+    background-color: #28a745;
+    border-color: #28a745;
+    color: white;
+  }
+  
+  button[type="submit"]:hover {
+    background-color: #218838;
+    border-color: #1e7e34;
+  }
+  
+  button[type="button"] {
+    background-color: #17a2b8;
+    border-color: #17a2b8;
+    color: white;
+  }
+  
+  button[type="button"]:hover {
+    background-color: #138496;
+    border-color: #117a8b;
+  }
+  
+  button[type="button"].btn-danger {
+    background-color: #dc3545;
+    border-color: #dc3545;
+  }
+  
+  button[type="button"].btn-danger:hover {
+    background-color: #c82333;
+    border-color: #bd2130;
+  }
+  
+  .table {
+    margin-top: 20px;
+  }
+  
+  .table thead th {
+    background-color: #343a40;
+    color: white;
+  }
+  
+  .table tbody tr:hover {
+    background-color: #f1f1f1;
+  }
+  

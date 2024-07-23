@@ -100,8 +100,7 @@ main {
     padding: 2rem;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     margin: 2rem auto;
-    width: 80%;
-    max-width: 700px;
+    width: 100%;
     text-align: left;
 }
 
@@ -151,4 +150,19 @@ footer {
     position: relative;
     width: 100%;
     bottom: 0;
+}
+
+.reviews-section {
+    display: flex;
+    justify-content: space-between;
+}
+
+.review-form-wrapper,
+.reviews-wrapper {
+    width: 48%;
+}
+
+.reviews-wrapper {
+    max-height: 500px; /* Adjust this value as needed */
+    overflow-y: auto;
 }
