@@ -53,6 +53,10 @@
     color: #666;
 }
 
+.map-container {
+    margin-top: 20px;
+}
+
 .contact-form {
     margin-top: 20px;
 }
