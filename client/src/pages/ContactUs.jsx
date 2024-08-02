@@ -7,8 +7,9 @@ import '../css/ContactStyle.css';
 const ContactUs = () => {
     return (
         <>
+         <NavigationBar />
             <Header />
-            <NavigationBar />
+           
             <main>
                 <section>
                     {/* <img src="/images/contact-banner.jpg" alt="Contact Us" width="100%" /> */}

@@ -73,8 +73,9 @@ function Reviews() {
 
     return (
         <>
-            <Header />
+            
             <NavigationBar />
+            <Header />
             <main>
                 <section className="reviews-section">
                     <div className="review-form-wrapper">

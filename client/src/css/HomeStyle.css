@@ -1,22 +1,121 @@
-.card {
-    background-color: #f9f9f9;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    padding: 16px;
-    margin: 16px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+body {
+    font-family: 'Arial', sans-serif;
+}
+
+.product-images-section {
+    padding: 20px 0;
+}
+
+.product-image {
+    margin-bottom: 20px;
+}
+
+.carousel-container .carousel-item img {
+    height: 300px;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+    transition: transform 0.1s ease-in-out;
+}
+
+.carousel-container .carousel-item img:hover {
+    transform: scale(0.05);
+}
+
+.banner-section {
+    position: relative;
+    text-align: center;
+    color: white;
+}
+
+.banner-img {
+    width: 100%;
+    height: auto;
+    filter: brightness(0.7);
+}
+
+.banner-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     text-align: center;
 }
 
-.spice-images {
-    display: flex;
-    justify-content: space-around;
+.banner-text h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+}
+
+.banner-text p {
+    font-size: 1.5rem;
+}
+
+.slogans-section h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+.slogans-section p {
+    font-size: 1.25rem;
+    margin: 10px 0;
+    font-style: italic;
+    color: #555;
+}
+
+.info-card {
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.process-section, .culture-section {
+    background-color: #f1f1f1;
+    padding: 20px;
+    border-radius: 10px;
     margin: 20px 0;
 }
 
-.spice-images img {
-    width: 30%;
-    height: auto;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+.process-section h2, .culture-section h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+.process-section p, .culture-section p {
+    font-size: 1.25rem;
+    margin: 10px 0;
+    color: #555;
+}
+
+.img-fluid {
+    border-radius: 10px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.img-fluid:hover {
+    transform: scale(1.05);
+}
+
+.animated-image {
+    animation: fadeInUp 2s ease-in-out;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translate3d(0, 100%, 0);
+    }
+    to {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+.additional-images-section img {
+    height: 300px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 20px;
 }

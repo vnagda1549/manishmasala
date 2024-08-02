@@ -7,8 +7,8 @@ import '../css/AboutStyle.css';
 const AboutUs = () => {
     return (
         <>
-            <Header />
             <NavigationBar />
+            <Header />
             <main className="about-main">
                 <section className="about-section">
                     <div className="about-card">
