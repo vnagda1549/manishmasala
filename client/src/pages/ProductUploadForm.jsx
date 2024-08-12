@@ -15,6 +15,7 @@ const GET_PRODUCTS = gql`
         size
         price
       }
+      category
     }
   }
 `;
@@ -31,6 +32,7 @@ const ADD_PRODUCT = gql`
         size
         price
       }
+      category
     }
   }
 `;
@@ -47,6 +49,7 @@ const UPDATE_PRODUCT = gql`
         size
         price
       }
+      category
     }
   }
 `;
@@ -58,6 +61,8 @@ const DELETE_PRODUCT = gql`
     }
   }
 `;
+
+const categories = ["Pure spices", "Blended spices"];
 
 const ProductUploadForm = () => {
   const { loading, error, data, refetch } = useQuery(GET_PRODUCTS);
@@ -72,6 +77,7 @@ const ProductUploadForm = () => {
   const [formData, setFormData] = useState({
     productName: "",
     productDescription: "",
+    category: categories[0],
   });
 
   useEffect(() => {
@@ -104,6 +110,7 @@ const ProductUploadForm = () => {
     setFormData({
       productName: product.name,
       productDescription: product.longDescription,
+      category: product.category,
     });
     setImageBase64(product.image);
   };
@@ -150,6 +157,7 @@ const ProductUploadForm = () => {
         size: size.size,
         price: parseFloat(size.price),
       })),
+      category: formData.category,
     };
 
     console.log("Submitting product:", newProduct);
@@ -180,6 +188,7 @@ const ProductUploadForm = () => {
     setFormData({
       productName: "",
       productDescription: "",
+      category: categories[0],
     });
   };
 
@@ -196,6 +205,7 @@ const ProductUploadForm = () => {
                   <th>Image</th>
                   <th className="w-50">Description</th>
                   <th>Sizes & Prices</th>
+                  <th>Category</th>
                   <th>Actions</th>
                 </tr>
               </thead>
@@ -220,6 +230,7 @@ const ProductUploadForm = () => {
                           </div>
                         ))}
                       </td>
+                      <td>{product.category}</td>
                       <td>
                         <Button
                           variant="warning"
@@ -294,6 +305,25 @@ const ProductUploadForm = () => {
                     }
                     required
                   />
+                </Form.Group>
+
+                <Form.Group controlId="category" className="mb-3">
+                  <Form.Label>Category</Form.Label>
+                  <Form.Control
+                    as="select"
+                    name="category"
+                    value={formData.category}
+                    onChange={(e) =>
+                      setFormData({ ...formData, category: e.target.value })
+                    }
+                    required
+                  >
+                    {categories.map((category, index) => (
+                      <option key={index} value={category}>
+                        {category}
+                      </option>
+                    ))}
+                  </Form.Control>
                 </Form.Group>
 
                 <h4 className="mt-4">Product Sizes</h4>

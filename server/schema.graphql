@@ -11,6 +11,7 @@ type Product {
   longDescription: String
   shortDescription: String
   quantities: [Quantity]
+  category: String
 }
 
 type Review {
@@ -40,6 +41,7 @@ input ProductInput {
   longDescription: String!
   shortDescription: String!
   quantities: [QuantityInput]!
+  category: String
 }
 
 input ReviewInput {
