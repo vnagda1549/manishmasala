@@ -18,7 +18,7 @@ app.use(
     origin: [
       "http://localhost:3000",
       "http://localhost:3001",
-      "https://manish-masala.web.app/",
+      "https://manish-masala.web.app",
     ], // Allow requests from both origins
     methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
     credentials: true,
