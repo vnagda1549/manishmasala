@@ -1,6 +1,8 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import { useQuery, gql } from "@apollo/client";
+import { Container } from "react-bootstrap";
 import "../css/ProductsPage.css";
+
 import ProductCard from "./ProductsCard";
 
 import Navbar from "../components/Navbar";
@@ -24,14 +26,11 @@ const GET_PRODUCTS = gql`
   }
 `;
 
-const categories = [
-  "Pure spices",
-  "Blended spices",
-];
+const categories = ["All Products", "Pure spices", "Blended spices"];
 
 function ProductList() {
   const { loading, error, data } = useQuery(GET_PRODUCTS);
-  const [selectedCategory, setSelectedCategory] = useState("All");
+  const [selectedCategory, setSelectedCategory] = useState("All Products");
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error.message}</p>;
@@ -40,9 +39,12 @@ function ProductList() {
     setSelectedCategory(event.target.value);
   };
 
-  const filteredProducts = selectedCategory === "All"
-    ? data.productList
-    : data.productList.filter(product => product.category === selectedCategory);
+  const filteredProducts =
+    selectedCategory === "All Products"
+      ? data.productList
+      : data.productList.filter(
+          (product) => product.category === selectedCategory
+        );
 
   console.log(
     "Product IDs:",
@@ -54,14 +56,21 @@ function ProductList() {
       <Navbar />
       <Header />
       <h2 className="products-heading">Our Products</h2>
-      <div className="category-select-container">
-        <label htmlFor="category-select">Sort by Category:</label>
-        <select id="category-select" value={selectedCategory} onChange={handleCategoryChange}>
+      <Container className="category-select-container container d-flex align-items-center">
+        <label className="pe-2" htmlFor="category-select">Sort by Category:</label>
+        <select
+          id="category-select"
+          value={selectedCategory}
+          onChange={handleCategoryChange}
+          className="form-control w-auto"
+        >
           {categories.map((category, index) => (
-            <option key={index} value={category}>{category}</option>
+            <option key={index} value={category}>
+              {category}
+            </option>
           ))}
         </select>
-      </div>
+      </Container>
       <div className="products-container">
         {filteredProducts.map((product) => (
           <ProductCard key={product._id} product={product} />
