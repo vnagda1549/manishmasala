@@ -8,8 +8,7 @@ function CustomNavbar() {
     <Navbar bg="light" expand="lg">
       <Container>
         <Navbar.Brand as={Link} to="/">
-          <img src="path-to-your-logo.png" height="30" alt="Logo" />
-          Laptop Hub
+          <img src="/images/manish-masala-logo.png" width="125" alt="Logo" />
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
