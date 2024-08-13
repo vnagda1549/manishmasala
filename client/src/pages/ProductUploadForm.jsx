@@ -62,7 +62,7 @@ const DELETE_PRODUCT = gql`
   }
 `;
 
-const categories = ["Pure spices", "Blended spices"];
+const categories = ["", "Pure spices", "Blended spices"];
 
 const ProductUploadForm = () => {
   const { loading, error, data, refetch } = useQuery(GET_PRODUCTS);
@@ -226,7 +226,7 @@ const ProductUploadForm = () => {
                       <td>
                         {product.quantities.map((size, i) => (
                           <div key={i}>
-                            {size.size} - ${size.price}
+                            {size.size} - ₹{size.price}
                           </div>
                         ))}
                       </td>

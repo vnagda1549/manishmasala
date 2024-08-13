@@ -1,6 +1,6 @@
 import { MongoClient } from 'mongodb';
 
-const url = "mongodb+srv://manishmasalafoods:CcAIiXrQ6BFUeEe8@manishmasala.zrbufhp.mongodb.net/myproductdb?retryWrites=true&w=majority";
+const url = process.env.MONGODB_URI || "mongodb+srv://manishmasalafoods:CcAIiXrQ6BFUeEe8@manishmasala.zrbufhp.mongodb.net/myproductdb?retryWrites=true&w=majority";
 
 let db;
 

@@ -92,7 +92,7 @@ const ProductUploadForm = () => {
                       <td>
                         {product.sizes.map((size, i) => (
                           <div key={i}>
-                            {size.size} - ${size.price}
+                            {size.size} - ₹{size.price}
                           </div>
                         ))}
                       </td>
@@ -165,7 +165,7 @@ const ProductUploadForm = () => {
                       </Form.Group>
                     </Col>
                     <Col>
-                      <Form.Group controlId={`price-${index}`}>
+                      <Form.Group controlId={`price-₹{index}`}>
                         <Form.Label>Price</Form.Label>
                         <Form.Control
                           type="number"

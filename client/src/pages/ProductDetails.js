@@ -138,7 +138,7 @@ function ProductDetails() {
                 <div className="product-card product-info-card">
                     <h2>{product.name}</h2>
                     <p className="description">{product.description}</p>
-                    <p className="price">${price.toFixed(2)}</p>
+                    <p className="price">₹{price.toFixed(2)}</p>
                     <div className="product-quantity">
                         <label className="quantity-label">Available Quantities:</label>
                         <div className="quantity-options">

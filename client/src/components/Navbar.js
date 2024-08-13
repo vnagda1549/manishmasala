@@ -1,20 +1,42 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { Navbar, Nav, Container } from "react-bootstrap";
+import { Link } from "react-router-dom";
+import "bootstrap/dist/css/bootstrap.min.css";
 
-function Navbar() {
-    return (
-        <nav>
-            <ul>
-                <li><Link to="/">Home</Link></li>
-                <li><Link to="/products">Products</Link></li>
-                <li><Link to="/about-us">About</Link></li>
-                <li><Link to="/contact-us">Contact</Link></li>
-                <li><Link to="/Reviews">Reviews</Link></li>
-                <li><Link to="/login">Login</Link></li>
-
-            </ul>
-        </nav>
-    );
+function CustomNavbar() {
+  return (
+    <Navbar bg="light" expand="lg">
+      <Container>
+        <Navbar.Brand as={Link} to="/">
+          <img src="path-to-your-logo.png" height="30" alt="Logo" />
+          Laptop Hub
+        </Navbar.Brand>
+        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Collapse id="basic-navbar-nav">
+          <Nav className="ms-auto">
+            <Nav.Link as={Link} to="/">
+              Home
+            </Nav.Link>
+            <Nav.Link as={Link} to="/products">
+              Products
+            </Nav.Link>
+            <Nav.Link as={Link} to="/about-us">
+              About
+            </Nav.Link>
+            <Nav.Link as={Link} to="/contact-us">
+              Contact
+            </Nav.Link>
+            <Nav.Link as={Link} to="/Reviews">
+              Reviews
+            </Nav.Link>
+            {/* <Nav.Link as={Link} to="/login">
+              Login
+            </Nav.Link> */}
+          </Nav>
+        </Navbar.Collapse>
+      </Container>
+    </Navbar>
+  );
 }
 
-export default Navbar;
+export default CustomNavbar;
